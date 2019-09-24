@@ -1,0 +1,1 @@
+//Aqui fica o modelo (schema) do cliente segundo o tutorial
