@@ -6,15 +6,15 @@ module.exports = function(server){
     server.use('/api', router);
 
     //Aqui se registra a rota de acesso da api
-    const clienteService = require('../services/clienteService')
-    clienteService.register(router,'/cliente')
+    const clienteService = require('../services/clienteService');
+    clienteService.register(router,'/cliente');
 
-    const padariaService = require('../services/padariaService')
-    padariaService.register(router,'/padaria')
+    const padariaService = require('../services/padariaService');
+    padariaService.register(router,'/padaria');
 
-    const vendaService = require('../services/vendaService')
-    vendaService.register(router,'/venda')
+    const vendaService = require('../services/vendaService');
+    vendaService.register(router,'/venda');
 
-    const notificacoesService = require('../services/notificacoesService')
-    notificacoesService.register(router,'/notificacoes')
+    const notificacoesService = require('../services/notificacoesService');
+    notificacoesService.register(router,'/notificacoes');
 }
