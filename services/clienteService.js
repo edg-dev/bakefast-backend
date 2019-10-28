@@ -6,7 +6,7 @@ cliente.route('login', function(req, res) {
     var user = req.body.username;
     var senha = req.body.senha;
     console.log(req.body);
-    cliente.find({}).exec()
+    cliente.find({"usuario" : {"username": user, "senha": senha}}).exec()
         .then(function(result) {
             console.log(result);
             res.send(result)
