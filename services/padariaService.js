@@ -3,10 +3,20 @@ const padaria = require('../models/padaria');
 const server = require('../config/server');
 
 //Endpoints customizados
-server.get('padaria/:username/:senha', (req, res) => {
-    var result = padaria.find(req.params.username, req.params.senha).exec();
-    res.send(result);
+padaria.route('login', function(req, res){
+    var user = req.body.username;
+    var senha = req.body.senha;
+    console.log(req.body);
+    padaria.find({"usuario": {"username": user, "senha": senha}}).exec()
+        .then(function(result){
+            console.log(result);
+            res.send(result);
+        })
+        .catch(error => {
+            console.log(error.response);
+        })
 });
+
 
 //creating rest API, add CRUD to mongo's schema
 padaria.methods(['get', 'post', 'put','delete']);
