@@ -5,10 +5,14 @@ const server = require('../config/server');
 cliente.route('login', function(req, res) {
     var user = req.body.username;
     var senha = req.body.senha;
-    console.log(req.body);
-    cliente.find({"usuario" : {"username": user, "senha": senha}}).exec()
+    var session = req.session;
+
+    cliente.findOne({"usuario" : {"username": user, "senha": senha}}).exec()
         .then(function(result) {
-            console.log(result);
+            //Adiciona os dados na sessão
+            session.userid = result.id;
+
+            //Redireciona para a página
             res.send(result)
         })
         .catch(error => {

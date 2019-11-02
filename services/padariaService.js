@@ -1,15 +1,18 @@
 //Aqui fica os métodos de acesso da API
 const padaria = require('../models/padaria');
-const server = require('../config/server');
 
 //Endpoints customizados
 padaria.route('login', function(req, res){
     var user = req.body.username;
     var senha = req.body.senha;
-    console.log(req.body);
-    padaria.find({"usuario": {"username": user, "senha": senha}}).exec()
-        .then(function(result){
-            console.log(result);
+    var session = req.session;
+
+    padaria.findOne({"usuario": {"username": user, "senha": senha}}).exec()
+        .then(function(result){  
+            //Armazena os dados na sessão 
+            session.userid = result.id;
+            
+            //Redireciona para a página
             res.send(result);
         })
         .catch(error => {
