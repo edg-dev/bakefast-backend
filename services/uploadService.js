@@ -7,15 +7,15 @@ const path = require('path');
 const router = express.Router();
 
 const s3 = new aws.S3({
-    accessKeyId: 'AKIAQI5UCLSCZTU7DU7O',
-    secretAccessKey: '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',
-    Bucket: 'bakefastimages' 
+    accessKeyId: '',
+    secretAccessKey: '',
+    Bucket: '' 
 });
 
 const imgUpload = multer({
     storage: multers3({
         s3: s3,
-        bucket: 'bakefastimages',
+        bucket: '',
         acl: 'public-read',
         key: function(req, file, cb){
             cb(null, path.basename(file.originalname, path.extname(file.originalname)) + '-' + Date.now() + path.extname(file.originalname))
