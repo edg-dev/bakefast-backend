@@ -17,4 +17,7 @@ module.exports = function(server){
 
     const notificacoesService = require('../services/notificacoesService');
     notificacoesService.register(router,'/notificacoes');
+
+    // const uploadService = require('../services/uploadService');
+    // uploadService.register(router, '/upload');
 }
