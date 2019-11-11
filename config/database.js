@@ -1,5 +1,7 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 
-module.exports = mongoose.connect('mongodb://localhost:27017/bakefasttest', {
+module.exports = mongoose.connect(process.env.MONGO_CONNECTIONSTRING , {
     useNewUrlParser: true
 });

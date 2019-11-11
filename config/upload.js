@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express'); 
 const aws = require('aws-sdk');
 const multers3 = require('multer-s3');
@@ -7,15 +9,16 @@ const path = require('path');
 const router = express.Router();
 
 const s3 = new aws.S3({
-    accessKeyId: '',
-    secretAccessKey: '',
-    Bucket: '' 
+    accessKeyId: process.env.AWS_ACCESSKEY,
+    secretAccessKey: process.env.AWS_SECRETKEY,
+    Bucket: process.env.AWS_BUCKET
 });
 
 const imgUpload = multer({
     storage: multers3({
         s3: s3,
-        bucket: '',
+        bucket: process.env.AWS_BUCKET,
+        contentType: multers3.AUTO_CONTENT_TYPE,
         acl: 'public-read',
         key: function(req, file, cb){
             cb(null, path.basename(file.originalname, path.extname(file.originalname)) + '-' + Date.now() + path.extname(file.originalname))
@@ -54,7 +57,7 @@ router.post('/single', (req, res) => {
                 const imageName = req.file.key;
                 const imageLocation = req.file.location;
 
-                res.json({
+                return res.json({
                     image: imageName,
                     location: imageLocation
                 });
