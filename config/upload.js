@@ -5,8 +5,10 @@ const aws = require('aws-sdk');
 const multers3 = require('multer-s3');
 const multer = require('multer');
 const path = require('path');
+const cors = require('cors');
 
 const router = express.Router();
+router.use(cors());;
 
 const s3 = new aws.S3({
     accessKeyId: process.env.AWS_ACCESSKEY,
