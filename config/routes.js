@@ -19,4 +19,7 @@ module.exports = function(server){
 
     const cardapioService = require('../services/cardapioService');
     cardapioService.register(router, '/cardapio');
+
+    const galeriaService = require('../services/galeriaService');
+    galeriaService.register(router, '/galeria');
 }
