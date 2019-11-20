@@ -73,6 +73,7 @@ const uploadsBusinessGallery = multer({
         s3: s3,
         bucket: process.env.AWS_BUCKET,
         acl: 'public-read',
+        contentType: multers3.AUTO_CONTENT_TYPE,
         key: function (req, file, cb) {
             cb( null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
         }
