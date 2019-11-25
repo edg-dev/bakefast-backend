@@ -12,7 +12,9 @@ const pedidoSchema = new mongoose.Schema({
     produtos: [{
         nome: {type:String, required:true},
         quantidade: {type:Number, required:true}
-    }]
+    }],
+    nomeCliente: {type: String, required: true},
+    telefoneCliente: {type: Number, required:true}
 });
 
 module.exports = restful.model('pedido', pedidoSchema);
