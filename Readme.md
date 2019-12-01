@@ -1,30 +1,13 @@
-# bakefast-backend
+# BakeFast-api
 
-Projeto de back-end da aplicação BakeFast. 
+Api feita em Node.js e MongoDB com integrações com a AWS S3, Google Firebase Messaging Cloud.
 
-1. Clonar o repositório;
-2. Abrir o cmd na pasta;
-3. npm install;
-4. npm start;
-  -> No cmd vai aparecer "API rodando...", isso significa que ela está funcionando normalmente.
-  
-Banco de dados local: necessita mongo instalado.
-1. Baixar o mongodb;
-2. Com o mongo instalado, crie uma pasta com o nome "banco" na pasta do mongo;
-3. Abra um terminal (cmder) e entre na pasta bin do mongo (exemplo: `cd "C:/mongo/bin"`);
-4. Dentro da bin, inicie o mongo dentro da pasta banco: `mongod --dbpath "C:/mongo/banco"`;
-  -> Se aparecer algo como "listening on port 27017" está funcionando normal.
-5. Use Robo3T ou mongo Compass pra realizar consultas.
+A api foi criada no padrão REST para satisfazer as operações e manipulação de dados realizadas na aplicação cliente.
 
-Para alterar para banco de dados local, acesse `"/config/database.js"` e altere a string de conexão para `"mongodb://localhost:27017/<nome do banco>"`, troque <nome do banco> pelo nome do banco criado na máquina.
-  
-Para testá-la, será necessário algum cliente REST, por exemplo o Postman.
-1. Baixar o Postman;
-2. Rodar a api e o banco (se for local);
-3. Realizar as requisições de acordo com as rotas programadas;
-
-Exemplo:
-  * Pegar todos os cliente: http://localhost:4000/api/cliente/ {Método GET}
-  * Adicionar um cliente: http://localhost:4000/api/cliente/ {Método POST} {necessita passar parâmetros no body}
-  * Alterar ou atualizar um cliente: http://localhost:4000/api/cliente/:id {Método PUT} {necessita passar id no link}
-  * Deletar um cliente: http://localhost:4000/api/cliente/:id {Método DELETE} {necessita passar id no link}
+Bibliotecas: 
+* node-restful: facilitar a criação de rotas padrão e interceptação para middlewares(criptografia de senhas, autenticação de api);
+* mongoose: realizar conexão e manipular objetos-modelo no banco de dados MongoDB;
+* bcrypt: criptografia de senhas;
+* multer & multer s3: upload de imagens;
+* aws-sdk: armazenamento de imagens no Amazon Web Services S3;
+* fireabase: notificacões push com o Firebase Messaging Cloud (FCM).
